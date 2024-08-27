@@ -4,9 +4,19 @@ import Container from "@/components/ui/container";
 import useCart from "@/hooks/use-cart";
 import CartItem from "./components/cart-item";
 import Summary from "./components/summary";
+import { useEffect, useState } from "react";
 
 const CartPage = () => {
+  const [isMOunted, setIsMounted] = useState(false);
   const cart = useCart();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMOunted) {
+    return null;
+  }
   return (
     <div className="bg-white">
       <Container>
